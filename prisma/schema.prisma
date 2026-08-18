@@ -1,0 +1,91 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+model Category {
+  id        Int       @id @default(autoincrement())
+  name      String
+  slug      String    @unique
+  icon      String?
+  order     Int       @default(0)
+  products  Product[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Product {
+  id            Int       @id @default(autoincrement())
+  name          String
+  slug          String    @unique
+  description   String?
+  price         Float
+  comparePrice  Float?
+  category      Category  @relation(fields: [categoryId], references: [id])
+  categoryId    Int
+  images        String    @default("[]")
+  material      String?
+  finish        String?
+  color         String?
+  width         Float?
+  height        Float?
+  depth         Float?
+  weight        Float?
+  warranty      String?
+  careInstructions String?
+  tags          String    @default("[]")
+  featured      Boolean   @default(false)
+  active        Boolean   @default(true)
+  stock         Int       @default(0)
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+}
+
+model Order {
+  id          Int      @id @default(autoincrement())
+  customerName String
+  email       String
+  phone       String?
+  address     String?
+  items       String
+  total       Float
+  status      String   @default("pendiente")
+  notes       String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Quote {
+  id          Int      @id @default(autoincrement())
+  customerName String
+  email       String
+  phone       String?
+  productId   Int?
+  productName String?
+  details     String?
+  status      String   @default("pendiente")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Message {
+  id          Int      @id @default(autoincrement())
+  name        String
+  email       String
+  phone       String?
+  subject     String?
+  body        String
+  status      String   @default("no_leido")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model SiteConfig {
+  id        Int      @id @default(autoincrement())
+  key       String   @unique
+  value     String
+  updatedAt DateTime @updatedAt
+}
