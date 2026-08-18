@@ -1,5 +1,6 @@
 "use client";
 import { useSession, signOut } from "next-auth/react";
+import { Session } from "next-auth";
 import { useRouter, usePathname } from "next/navigation";
 import { useEffect } from "react";
 import Link from "next/link";
@@ -79,9 +80,15 @@ function AdminInner({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default function AdminLayoutClient({ children }: { children: React.ReactNode }) {
+export default function AdminLayoutClient({
+  children,
+  session,
+}: {
+  children: React.ReactNode;
+  session: Session | null;
+}) {
   return (
-    <SessionProvider>
+    <SessionProvider session={session}>
       <AdminInner>{children}</AdminInner>
     </SessionProvider>
   );
