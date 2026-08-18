@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MYD Muebles — Fabricación y venta de muebles, accesorios y decoración de alta calidad en Ecuador.">
+  <title>MYD Muebles — Diseño y Calidad para tu Hogar</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="index.html" class="nav-brand">
+    <div class="nav-logo">M</div>
+    MYD <span>Muebles</span>
+  </a>
+  <div class="nav-links">
+    <a href="index.html" class="active">Inicio</a>
+    <a href="catalog.html">Catálogo</a>
+    <a href="about.html">Nosotros</a>
+    <a href="about.html#servicios">Servicios</a>
+    <a href="about.html#contacto">Contacto</a>
+  </div>
+  <div class="nav-actions">
+    <button class="nav-icon-btn" id="searchToggle" title="Buscar" aria-label="Buscar">🔍</button>
+    <button class="nav-icon-btn open-cart" title="Carrito" aria-label="Carrito">
+      🛒 <span class="nav-badge cart-count" style="display:none">0</span>
+    </button>
+    <button class="nav-icon-btn" onclick="window.location.href='catalog.html#favoritos'" title="Favoritos" aria-label="Favoritos">
+      ❤️ <span class="nav-badge fav-count" style="display:none">0</span>
+    </button>
+    <a href="admin.html" class="btn btn-outline btn-sm">Admin</a>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- Mobile search bar (visible when toggled) -->
+<div id="mobileSearchBar" style="display:none;position:fixed;top:68px;left:0;right:0;z-index:990;padding:.75rem 1.5rem;background:rgba(10,12,16,.96);border-bottom:1px solid var(--border);">
+  <div class="search-bar">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="searchInputMobile" placeholder="Buscar muebles, categorías..." autocomplete="off">
+    <div class="search-suggestions" id="searchSuggestionsMobile"></div>
+  </div>
+</div>
+
+<!-- Mobile Nav -->
+<div class="mobile-nav" id="mobileNav" role="navigation" aria-label="Menú móvil">
+  <a href="index.html">Inicio</a>
+  <a href="catalog.html">Catálogo</a>
+  <a href="about.html">Nosotros</a>
+  <a href="about.html#servicios">Servicios</a>
+  <a href="about.html#contacto">Contacto</a>
+  <a href="admin.html" style="color:var(--accent)">Panel Admin</a>
+</div>
+
+<!-- HERO -->
+<section class="hero page-top">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <div class="container hero-content">
+    <div class="hero-tag">✨ Fabricación Propia en Ecuador</div>
+    <h1>Muebles que <em>Transforman</em><br>tu Espacio</h1>
+    <p>Diseño contemporáneo, materiales premium y calidad garantizada. Cada pieza es creada con precisión artesanal para durar toda la vida.</p>
+    <div class="hero-btns">
+      <a href="catalog.html" class="btn btn-primary">🛒 Ver Catálogo</a>
+      <a href="about.html#contacto" class="btn btn-outline">💬 Solicitar Cotización</a>
+    </div>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>+500</strong><span>Productos disponibles</span></div>
+      <div class="hero-stat"><strong>+2,000</strong><span>Clientes satisfechos</span></div>
+      <div class="hero-stat"><strong>15+</strong><span>Años de experiencia</span></div>
+      <div class="hero-stat"><strong>100%</strong><span>Fabricación propia</span></div>
+    </div>
+  </div>
+  <div class="hero-image">
+    <div class="hero-image-inner">🛋️</div>
+  </div>
+</section>
+
+<!-- SEARCH BAR -->
+<section class="section-sm" style="background:var(--bg2);border-top:1px solid var(--border);border-bottom:1px solid var(--border);">
+  <div class="container">
+    <div class="search-bar">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" placeholder="Buscar sofás, comedores, camas, escritorios..." autocomplete="off">
+      <div class="search-suggestions" id="searchSuggestions"></div>
+    </div>
+  </div>
+</section>
+
+<!-- CATEGORIES -->
+<section class="section">
+  <div class="container">
+    <div class="section-heading center">
+      <span class="overline">Explorar</span>
+      <h2>Nuestras Categorías</h2>
+      <div class="divider center"></div>
+    </div>
+    <div class="categories-grid" id="categoriesGrid"></div>
+  </div>
+</section>
+
+<!-- FEATURED PRODUCTS -->
+<section class="section" style="background:var(--bg2)">
+  <div class="container">
+    <div class="section-heading" style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+      <div>
+        <span class="overline">Destacados</span>
+        <h2>Productos Favoritos</h2>
+        <div class="divider"></div>
+      </div>
+      <a href="catalog.html" class="btn btn-outline btn-sm">Ver todos →</a>
+    </div>
+    <div class="products-grid" id="featuredProducts"></div>
+  </div>
+</section>
+
+<!-- WHY US -->
+<section class="section">
+  <div class="container">
+    <div class="section-heading center">
+      <span class="overline">¿Por qué elegirnos?</span>
+      <h2>Calidad que se Siente</h2>
+      <div class="divider center"></div>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card glass">
+        <div class="feature-icon">🏭</div>
+        <h4>Fabricación Propia</h4>
+        <p>Producimos cada mueble en nuestras instalaciones, controlando calidad en cada etapa del proceso.</p>
+      </div>
+      <div class="feature-card glass">
+        <div class="feature-icon">🌲</div>
+        <h4>Materiales Premium</h4>
+        <p>Seleccionamos madera maciza, telas importadas y acabados de primera calidad para cada pieza.</p>
+      </div>
+      <div class="feature-card glass">
+        <div class="feature-icon">🚚</div>
+        <h4>Entrega e Instalación</h4>
+        <p>Entregamos e instalamos en todo el Ecuador. Servicio de armado profesional incluido sin costo extra.</p>
+      </div>
+      <div class="feature-card glass">
+        <div class="feature-icon">🛡️</div>
+        <h4>Garantía Real</h4>
+        <p>Hasta 5 años de garantía en estructura. Si algo falla, nosotros nos hacemos cargo.</p>
+      </div>
+      <div class="feature-card glass">
+        <div class="feature-icon">🎨</div>
+        <h4>Personalización Total</h4>
+        <p>Adapta colores, medidas y materiales. Creamos el mueble exacto que tienes en mente.</p>
+      </div>
+      <div class="feature-card glass">
+        <div class="feature-icon">💎</div>
+        <h4>Diseño Exclusivo</h4>
+        <p>Nuestros diseñadores crean piezas originales que no encontrarás en ninguna otra tienda.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COLLECTIONS -->
+<section class="section" style="background:var(--bg2)">
+  <div class="container">
+    <div class="section-heading center">
+      <span class="overline">Colecciones</span>
+      <h2>Líneas Exclusivas</h2>
+      <div class="divider center"></div>
+    </div>
+    <div class="collections-grid">
+      <div class="collection-card large" onclick="window.location.href='catalog.html?cat=salas'">
+        <div class="collection-bg">🛋️</div>
+        <div class="collection-overlay">
+          <h3>Colección Aurora</h3>
+          <p>Sofás modulares de diseño contemporáneo</p>
+        </div>
+      </div>
+      <div class="collection-card" onclick="window.location.href='catalog.html?cat=dormitorios'">
+        <div class="collection-bg">🛏️</div>
+        <div class="collection-overlay">
+          <h3>Colección Luna</h3>
+          <p>Dormitorios de ensueño</p>
+        </div>
+      </div>
+      <div class="collection-card" onclick="window.location.href='catalog.html?cat=comedores'">
+        <div class="collection-bg">🍽️</div>
+        <div class="collection-overlay">
+          <h3>Colección Venecia</h3>
+          <p>Comedores de diseño italiano</p>
+        </div>
+      </div>
+      <div class="collection-card" onclick="window.location.href='catalog.html?cat=oficina'">
+        <div class="collection-bg">🖥️</div>
+        <div class="collection-overlay">
+          <h3>Colección Orbital</h3>
+          <p>Espacios de trabajo modernos</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NEW ARRIVALS -->
+<section class="section">
+  <div class="container">
+    <div class="section-heading" style="display:flex;align-items:flex-end;justify-content:space-between;flex-wrap:wrap;gap:1rem">
+      <div>
+        <span class="overline">Novedades</span>
+        <h2>Recién Llegados</h2>
+        <div class="divider"></div>
+      </div>
+      <a href="catalog.html?badge=new" class="btn btn-outline btn-sm">Ver novedades →</a>
+    </div>
+    <div class="products-grid" id="newProducts"></div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="section" style="background:var(--bg2)">
+  <div class="container">
+    <div class="section-heading center">
+      <span class="overline">Testimonios</span>
+      <h2>Lo que Dicen Nuestros Clientes</h2>
+      <div class="divider center"></div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card glass">
+        <div class="stars">★★★★★</div>
+        <p>"El sofá Aurora es increíble. La calidad de la tela y la comodidad superaron todas mis expectativas. El servicio de entrega e instalación fue impecable."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">M</div>
+          <div><div class="author-name">María González</div><div class="author-city">Quito, Ecuador</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card glass">
+        <div class="stars">★★★★★</div>
+        <p>"Compramos el comedor Venecia para nuestro restaurante. Excelente calidad, diseño elegante y el precio es muy competitivo. Sin duda volvemos a comprar."</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">C</div>
+          <div><div class="author-name">Carlos Vega</div><div class="author-city">Guayaquil, Ecuador</div></div>
+        </div>
+      </div>
+      <div class="testimonial-card glass">
+        <div class="stars">★★★★★</div>
+        <p>"Pedimos un dormitorio completo personalizado. MYD Muebles cumplió exactamente con las medidas y colores que necesitábamos. ¡100% recomendados!"</p>
+        <div class="testimonial-author">
+          <div class="author-avatar">A</div>
+          <div><div class="author-name">Ana Torres</div><div class="author-city">Cuenca, Ecuador</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="section">
+  <div class="container">
+    <div class="cta-banner glass">
+      <div>
+        <h2>¿Tienes un Proyecto en Mente?</h2>
+        <p>Cotiza tu proyecto sin compromiso. Nuestros diseñadores te ayudan a crear el espacio que siempre soñaste.</p>
+      </div>
+      <div class="cta-actions">
+        <a href="about.html#contacto" class="btn btn-primary">💬 Solicitar Cotización</a>
+        <a href="https://wa.me/593991234567?text=Hola%2C%20me%20interesa%20una%20cotización" target="_blank" rel="noopener" class="btn btn-gold">📱 WhatsApp</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-brand" style="margin-bottom:1rem">
+          <div class="nav-logo">M</div>
+          MYD <span>Muebles</span>
+        </div>
+        <p>Fabricación y venta de muebles, accesorios y artículos de decoración de alta calidad en Ecuador. Más de 15 años transformando hogares.</p>
+        <div class="footer-social">
+          <a class="social-btn" href="https://instagram.com/mydmuebles" target="_blank" rel="noopener" aria-label="Instagram">📸</a>
+          <a class="social-btn" href="https://facebook.com/mydmuebles" target="_blank" rel="noopener" aria-label="Facebook">👍</a>
+          <a class="social-btn" href="https://wa.me/593991234567" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+          <a class="social-btn" href="https://tiktok.com/@mydmuebles" target="_blank" rel="noopener" aria-label="TikTok">🎵</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Catálogo</h5>
+        <ul>
+          <li><a href="catalog.html?cat=salas">Salas</a></li>
+          <li><a href="catalog.html?cat=comedores">Comedores</a></li>
+          <li><a href="catalog.html?cat=dormitorios">Dormitorios</a></li>
+          <li><a href="catalog.html?cat=oficina">Oficina</a></li>
+          <li><a href="catalog.html?cat=exteriores">Exteriores</a></li>
+          <li><a href="catalog.html?cat=decoracion">Decoración</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Empresa</h5>
+        <ul>
+          <li><a href="about.html">Quiénes Somos</a></li>
+          <li><a href="about.html#servicios">Servicios</a></li>
+          <li><a href="about.html#faq">Preguntas Frecuentes</a></li>
+          <li><a href="about.html#contacto">Contacto</a></li>
+          <li><a href="about.html#terminos">Términos y Condiciones</a></li>
+        </ul>
+      </div>
+      <div class="footer-col footer-contact">
+        <h5>Contacto</h5>
+        <ul>
+          <li><span class="icon">📍</span><span>Av. Principal 123, Quito, Ecuador</span></li>
+          <li><span class="icon">📞</span><a href="tel:+593991234567">+593 99 123 4567</a></li>
+          <li><span class="icon">✉️</span><a href="mailto:ventas@mydmuebles.ec">ventas@mydmuebles.ec</a></li>
+          <li><span class="icon">🕐</span><span>Lun–Vie 8h–18h · Sáb 9h–14h</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 MYD Muebles. Todos los derechos reservados.</p>
+      <div class="footer-bottom-links">
+        <a href="about.html#terminos">Términos</a>
+        <a href="about.html#terminos">Privacidad</a>
+        <a href="about.html#terminos">Garantías</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a class="whatsapp-float" href="#" target="_blank" rel="noopener" aria-label="Contactar por WhatsApp">💬</a>
+
+<!-- Cart Drawer -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<div class="cart-drawer" id="cartDrawer" role="dialog" aria-label="Carrito de compras">
+  <div class="cart-header">
+    <h3>🛒 Carrito de Compras</h3>
+    <button class="cart-close" id="cartClose" aria-label="Cerrar carrito">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems"><div class="cart-empty"><div class="icon">🛒</div><p>Tu carrito está vacío</p></div></div>
+  <div class="cart-footer">
+    <div class="cart-total"><span>Total</span><span id="cartTotal">$0</span></div>
+    <button class="btn btn-primary btn-full" onclick="showToast('Función de pago próximamente disponible','')">💳 Proceder al Pago</button>
+    <button class="btn btn-outline btn-full" style="margin-top:.5rem" onclick="closeCart()">Seguir Comprando</button>
+  </div>
+</div>
+
+<!-- Quote Modal -->
+<div class="modal-overlay" id="quoteModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('quoteModal')">✕</button>
+    <h3>💬 Solicitar Cotización</h3>
+    <form id="quoteForm">
+      <div class="form-group"><label>Nombre *</label><input type="text" name="name" required placeholder="Tu nombre completo"></div>
+      <div class="form-group"><label>Teléfono / WhatsApp *</label><input type="tel" name="phone" required placeholder="+593 99 000 0000"></div>
+      <div class="form-group"><label>Correo Electrónico</label><input type="email" name="email" placeholder="tu@correo.com"></div>
+      <div class="form-group"><label>¿Qué necesitas?</label><textarea name="message" placeholder="Describe el mueble o proyecto que necesitas..."></textarea></div>
+      <button type="submit" class="btn btn-primary btn-full">Enviar Cotización →</button>
+    </form>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+// Add to cart by product id (avoids embedding name string in onclick attributes)
+function addToCartById(id) {
+  const p = getAdminProducts().find(x => x.id === id);
+  if (p) cart.add({ id: p.id, name: p.name, price: p.price, icon: p.icon || '🪑' });
+}
+
+// Render categories
+document.getElementById('categoriesGrid').innerHTML = CATEGORIES.map(c => `
+  <a href="catalog.html?cat=${c.id}" class="category-card glass">
+    <div class="cat-icon">${c.icon}</div>
+    <h4>${c.name}</h4>
+    <span>${c.count} productos</span>
+  </a>`).join('');
+
+// Render featured products
+function productCard(p) {
+  const cat = CATEGORIES.find(c=>c.id===p.category)?.name || p.category;
+  return `
+  <div class="product-card glass" onclick="window.location.href='product.html?id=${p.id}'">
+    <div class="product-img">
+      <div class="img-placeholder">${p.icon||'🪑'}</div>
+      <div class="product-badges">${p.badge ? `<span class="badge badge-${p.badge}">${p.badge==='new'?'NUEVO':p.badge==='sale'?'OFERTA':'HOT'}</span>` : ''}</div>
+      <div class="product-actions">
+        <button class="product-action-btn ${favorites.has(p.id)?'fav-active':''}" data-fav="${p.id}" onclick="event.stopPropagation();favorites.toggle(${p.id})" title="Favorito" aria-label="Agregar a favoritos">❤️</button>
+        <button class="product-action-btn" data-add-id="${p.id}" onclick="event.stopPropagation();addToCartById(${p.id})" title="Añadir al carrito" aria-label="Añadir al carrito">🛒</button>
+      </div>
+    </div>
+    <div class="product-body">
+      <div class="product-cat">${cat}</div>
+      <div class="product-name">${p.name}</div>
+      <div class="product-dims">📐 ${p.dims.h}×${p.dims.w}×${p.dims.d} cm · ${p.material}</div>
+      <div class="product-footer">
+        <div>
+          <div class="product-price">$${p.price.toLocaleString()}</div>
+          ${p.priceOld ? `<div class="product-price-old">$${p.priceOld.toLocaleString()}</div>` : ''}
+        </div>
+        <a href="product.html?id=${p.id}" class="btn btn-primary btn-sm" onclick="event.stopPropagation()">Ver →</a>
+      </div>
+    </div>
+  </div>`;
+}
+
+document.getElementById('featuredProducts').innerHTML = getFeaturedProducts().map(productCard).join('');
+document.getElementById('newProducts').innerHTML = getNewProducts().slice(0,4).map(productCard).join('');
+
+// Search toggle
+document.getElementById('searchToggle')?.addEventListener('click', () => {
+  const bar = document.getElementById('mobileSearchBar');
+  if (bar) { bar.style.display = bar.style.display === 'none' ? 'block' : 'none'; }
+});
+</script>
+</body>
+</html>

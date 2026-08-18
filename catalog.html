@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Catálogo completo de muebles MYD — Filtra por categoría, precio, material y más.">
+  <title>Catálogo — MYD Muebles</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="index.html" class="nav-brand"><div class="nav-logo">M</div> MYD <span>Muebles</span></a>
+  <div class="nav-links">
+    <a href="index.html">Inicio</a>
+    <a href="catalog.html" class="active">Catálogo</a>
+    <a href="about.html">Nosotros</a>
+    <a href="about.html#servicios">Servicios</a>
+    <a href="about.html#contacto">Contacto</a>
+  </div>
+  <div class="nav-actions">
+    <button class="nav-icon-btn open-cart" title="Carrito">🛒 <span class="nav-badge cart-count" style="display:none">0</span></button>
+    <button class="nav-icon-btn" title="Favoritos">❤️ <span class="nav-badge fav-count" style="display:none">0</span></button>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Inicio</a>
+  <a href="catalog.html">Catálogo</a>
+  <a href="about.html">Nosotros</a>
+  <a href="about.html#contacto">Contacto</a>
+</div>
+
+<div class="page-top">
+  <!-- Page Header -->
+  <section class="section-sm" style="background:var(--bg2);border-bottom:1px solid var(--border)">
+    <div class="container">
+      <div class="search-bar" style="max-width:100%">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="searchInput" placeholder="Buscar en catálogo..." autocomplete="off">
+        <div class="search-suggestions" id="searchSuggestions"></div>
+      </div>
+    </div>
+  </section>
+
+  <div class="container" style="padding-top:2rem;padding-bottom:4rem">
+    <div class="catalog-layout">
+
+      <!-- SIDEBAR FILTERS (desktop) -->
+      <aside class="sidebar">
+        <div class="filter-panel glass">
+          <h3 style="margin-bottom:1.5rem">Filtros</h3>
+
+          <div class="filter-group">
+            <h5>Categoría</h5>
+            <label><input type="radio" name="cat" value="" checked onchange="applyFilters()"> Todas las categorías</label>
+            <label><input type="radio" name="cat" value="salas" onchange="applyFilters()"> 🛋️ Salas</label>
+            <label><input type="radio" name="cat" value="comedores" onchange="applyFilters()"> 🍽️ Comedores</label>
+            <label><input type="radio" name="cat" value="dormitorios" onchange="applyFilters()"> 🛏️ Dormitorios</label>
+            <label><input type="radio" name="cat" value="oficina" onchange="applyFilters()"> 🖥️ Oficina</label>
+            <label><input type="radio" name="cat" value="exteriores" onchange="applyFilters()"> 🌿 Exteriores</label>
+            <label><input type="radio" name="cat" value="accesorios" onchange="applyFilters()"> 🪴 Accesorios</label>
+            <label><input type="radio" name="cat" value="decoracion" onchange="applyFilters()"> 🖼️ Decoración</label>
+          </div>
+
+          <div class="filter-group">
+            <h5>Precio (USD)</h5>
+            <div class="price-range">
+              <input type="number" id="priceMin" placeholder="Mín" min="0" oninput="applyFilters()">
+              <span style="color:var(--muted)">—</span>
+              <input type="number" id="priceMax" placeholder="Máx" min="0" oninput="applyFilters()">
+            </div>
+          </div>
+
+          <div class="filter-group">
+            <h5>Etiqueta</h5>
+            <label><input type="radio" name="badge" value="" checked onchange="applyFilters()"> Todos</label>
+            <label><input type="radio" name="badge" value="new" onchange="applyFilters()"> 🆕 Nuevo</label>
+            <label><input type="radio" name="badge" value="sale" onchange="applyFilters()"> 🏷️ Oferta</label>
+          </div>
+
+          <button class="btn btn-outline btn-full" onclick="clearFilters()" style="margin-top:.5rem">Limpiar Filtros</button>
+        </div>
+      </aside>
+
+      <!-- MAIN CONTENT -->
+      <main>
+        <!-- Mobile filter chips -->
+        <div style="display:flex;gap:.5rem;flex-wrap:wrap;margin-bottom:1rem" class="mobile-filter-chips">
+          <button class="btn btn-sm btn-outline" onclick="setMobileCat('')">Todos</button>
+          <button class="btn btn-sm btn-outline" onclick="setMobileCat('salas')">🛋️ Salas</button>
+          <button class="btn btn-sm btn-outline" onclick="setMobileCat('comedores')">🍽️ Comedores</button>
+          <button class="btn btn-sm btn-outline" onclick="setMobileCat('dormitorios')">🛏️ Dormitorios</button>
+          <button class="btn btn-sm btn-outline" onclick="setMobileCat('oficina')">🖥️ Oficina</button>
+          <button class="btn btn-sm btn-outline" onclick="setMobileCat('exteriores')">🌿 Exteriores</button>
+          <button class="btn btn-sm btn-outline" onclick="setMobileCat('accesorios')">🪴 Accesorios</button>
+          <button class="btn btn-sm btn-outline" onclick="setMobileCat('decoracion')">🖼️ Decoración</button>
+        </div>
+
+        <div class="catalog-header">
+          <div>
+            <h2 id="catalogTitle">Todo el Catálogo</h2>
+            <div class="results-count" id="resultsCount"></div>
+          </div>
+          <select id="sortSelect" onchange="applyFilters()">
+            <option value="default">Ordenar por defecto</option>
+            <option value="price-asc">Precio: menor a mayor</option>
+            <option value="price-desc">Precio: mayor a menor</option>
+            <option value="name-asc">Nombre A–Z</option>
+            <option value="name-desc">Nombre Z–A</option>
+          </select>
+        </div>
+
+        <div class="products-grid" id="catalogGrid"></div>
+      </main>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-brand" style="margin-bottom:1rem"><div class="nav-logo">M</div> MYD <span>Muebles</span></div>
+        <p>Fabricación y venta de muebles de alta calidad en Ecuador.</p>
+        <div class="footer-social">
+          <a class="social-btn" href="https://instagram.com/mydmuebles" target="_blank" rel="noopener" aria-label="Instagram">📸</a>
+          <a class="social-btn" href="https://facebook.com/mydmuebles" target="_blank" rel="noopener" aria-label="Facebook">👍</a>
+          <a class="social-btn" href="https://wa.me/593991234567" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+        </div>
+      </div>
+      <div class="footer-col"><h5>Categorías</h5><ul>
+        <li><a href="catalog.html?cat=salas">Salas</a></li>
+        <li><a href="catalog.html?cat=comedores">Comedores</a></li>
+        <li><a href="catalog.html?cat=dormitorios">Dormitorios</a></li>
+        <li><a href="catalog.html?cat=oficina">Oficina</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Empresa</h5><ul>
+        <li><a href="about.html">Nosotros</a></li>
+        <li><a href="about.html#servicios">Servicios</a></li>
+        <li><a href="about.html#faq">FAQ</a></li>
+        <li><a href="about.html#contacto">Contacto</a></li>
+      </ul></div>
+      <div class="footer-col footer-contact"><h5>Contacto</h5><ul>
+        <li><span class="icon">📍</span><span>Av. Principal 123, Quito</span></li>
+        <li><span class="icon">📞</span><a href="tel:+593991234567">+593 99 123 4567</a></li>
+        <li><span class="icon">✉️</span><a href="mailto:ventas@mydmuebles.ec">ventas@mydmuebles.ec</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 MYD Muebles. Todos los derechos reservados.</p>
+      <div class="footer-bottom-links"><a href="about.html#terminos">Términos</a><a href="about.html#terminos">Privacidad</a></div>
+    </div>
+  </div>
+</footer>
+
+<a class="whatsapp-float" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+<!-- Cart Drawer -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<div class="cart-drawer" id="cartDrawer" role="dialog" aria-label="Carrito">
+  <div class="cart-header"><h3>🛒 Carrito</h3><button class="cart-close" id="cartClose">✕</button></div>
+  <div class="cart-items" id="cartItems"><div class="cart-empty"><div class="icon">🛒</div><p>Tu carrito está vacío</p></div></div>
+  <div class="cart-footer">
+    <div class="cart-total"><span>Total</span><span id="cartTotal">$0</span></div>
+    <button class="btn btn-primary btn-full" onclick="showToast('Función de pago próximamente disponible','')">💳 Proceder al Pago</button>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+// Add to cart by product id (avoids embedding name string in onclick attributes)
+function addToCartById(id) {
+  const p = getAdminProducts().find(x => x.id === id);
+  if (p) cart.add({ id: p.id, name: p.name, price: p.price, icon: p.icon || '🪑' });
+}
+
+let activeFilters = { cat: '', badge: '', q: '', priceMin: '', priceMax: '' };
+
+function productCard(p) {
+  const cat = CATEGORIES.find(c=>c.id===p.category)?.name||p.category;
+  return `
+  <div class="product-card glass" onclick="window.location.href='product.html?id=${p.id}'">
+    <div class="product-img">
+      <div class="img-placeholder">${p.icon||'🪑'}</div>
+      <div class="product-badges">${p.badge?`<span class="badge badge-${p.badge}">${p.badge==='new'?'NUEVO':p.badge==='sale'?'OFERTA':'HOT'}</span>`:''}</div>
+      <div class="product-actions">
+        <button class="product-action-btn ${favorites.has(p.id)?'fav-active':''}" data-fav="${p.id}" onclick="event.stopPropagation();favorites.toggle(${p.id})" title="Favorito" aria-label="Favorito">❤️</button>
+        <button class="product-action-btn" data-add-id="${p.id}" onclick="event.stopPropagation();addToCartById(${p.id})" title="Carrito" aria-label="Agregar al carrito">🛒</button>
+      </div>
+    </div>
+    <div class="product-body">
+      <div class="product-cat">${cat}</div>
+      <div class="product-name">${p.name}</div>
+      <div class="product-dims">📐 ${p.dims.h}×${p.dims.w}×${p.dims.d} cm</div>
+      <div class="product-footer">
+        <div>
+          <div class="product-price">$${p.price.toLocaleString()}</div>
+          ${p.priceOld?`<div class="product-price-old">$${p.priceOld.toLocaleString()}</div>`:''}
+        </div>
+        <a href="product.html?id=${p.id}" class="btn btn-primary btn-sm" onclick="event.stopPropagation()">Ver →</a>
+      </div>
+    </div>
+  </div>`;
+}
+
+function applyFilters() {
+  activeFilters.cat = document.querySelector('[name=cat]:checked')?.value || '';
+  activeFilters.badge = document.querySelector('[name=badge]:checked')?.value || '';
+  activeFilters.priceMin = document.getElementById('priceMin')?.value || '';
+  activeFilters.priceMax = document.getElementById('priceMax')?.value || '';
+  activeFilters.q = document.getElementById('searchInput')?.value?.toLowerCase().trim() || '';
+  const sort = document.getElementById('sortSelect')?.value || 'default';
+  renderCatalog(sort);
+}
+
+function renderCatalog(sort = 'default') {
+  let products = getAdminProducts();
+
+  if (activeFilters.cat)   products = products.filter(p => p.category === activeFilters.cat);
+  if (activeFilters.badge) products = products.filter(p => p.badge === activeFilters.badge);
+  if (activeFilters.q)     products = products.filter(p => p.name.toLowerCase().includes(activeFilters.q) || (CATEGORIES.find(c=>c.id===p.category)?.name||'').toLowerCase().includes(activeFilters.q));
+  if (activeFilters.priceMin) products = products.filter(p => p.price >= parseFloat(activeFilters.priceMin));
+  if (activeFilters.priceMax) products = products.filter(p => p.price <= parseFloat(activeFilters.priceMax));
+
+  if (sort === 'price-asc')  products = [...products].sort((a,b) => a.price - b.price);
+  if (sort === 'price-desc') products = [...products].sort((a,b) => b.price - a.price);
+  if (sort === 'name-asc')   products = [...products].sort((a,b) => a.name.localeCompare(b.name));
+  if (sort === 'name-desc')  products = [...products].sort((a,b) => b.name.localeCompare(a.name));
+
+  const grid = document.getElementById('catalogGrid');
+  const count = document.getElementById('resultsCount');
+  if (!grid) return;
+  count.textContent = `${products.length} producto${products.length !== 1 ? 's' : ''}`;
+  grid.innerHTML = products.length ? products.map(productCard).join('') :
+    `<div class="no-results" style="grid-column:1/-1"><div class="icon">🔍</div><p>No se encontraron productos con esos filtros.</p><button class="btn btn-outline" onclick="clearFilters()" style="margin-top:1rem">Limpiar Filtros</button></div>`;
+  favorites._updateButtons();
+}
+
+function clearFilters() {
+  document.querySelectorAll('[name=cat]')[0].checked = true;
+  document.querySelectorAll('[name=badge]')[0].checked = true;
+  document.getElementById('priceMin').value = '';
+  document.getElementById('priceMax').value = '';
+  document.getElementById('searchInput').value = '';
+  document.getElementById('sortSelect').value = 'default';
+  activeFilters = { cat: '', badge: '', q: '', priceMin: '', priceMax: '' };
+  renderCatalog();
+}
+
+function setMobileCat(cat) {
+  activeFilters.cat = cat;
+  const radios = document.querySelectorAll('[name=cat]');
+  radios.forEach(r => { if (r.value === cat) r.checked = true; });
+  renderCatalog(document.getElementById('sortSelect')?.value || 'default');
+}
+
+// Read URL params
+const urlParams = new URLSearchParams(window.location.search);
+const urlCat   = urlParams.get('cat')   || '';
+const urlBadge = urlParams.get('badge') || '';
+const urlQ     = urlParams.get('q')     || '';
+
+if (urlCat) {
+  document.querySelectorAll('[name=cat]').forEach(r => { if (r.value === urlCat) r.checked = true; });
+  activeFilters.cat = urlCat;
+  const catName = CATEGORIES.find(c => c.id === urlCat)?.name;
+  if (catName) document.getElementById('catalogTitle').textContent = catName;
+}
+if (urlBadge) {
+  document.querySelectorAll('[name=badge]').forEach(r => { if (r.value === urlBadge) r.checked = true; });
+  activeFilters.badge = urlBadge;
+}
+if (urlQ) {
+  document.getElementById('searchInput').value = urlQ;
+  activeFilters.q = urlQ;
+}
+
+document.getElementById('searchInput')?.addEventListener('input', applyFilters);
+renderCatalog();
+</script>
+</body>
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Nosotros — MYD Muebles. Empresa ecuatoriana de fabricación y venta de muebles de alta calidad.">
+  <title>Nosotros — MYD Muebles</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="index.html" class="nav-brand"><div class="nav-logo">M</div> MYD <span>Muebles</span></a>
+  <div class="nav-links">
+    <a href="index.html">Inicio</a>
+    <a href="catalog.html">Catálogo</a>
+    <a href="about.html" class="active">Nosotros</a>
+    <a href="about.html#servicios">Servicios</a>
+    <a href="about.html#contacto">Contacto</a>
+  </div>
+  <div class="nav-actions">
+    <button class="nav-icon-btn open-cart" title="Carrito">🛒 <span class="nav-badge cart-count" style="display:none">0</span></button>
+    <button class="nav-icon-btn" title="Favoritos">❤️ <span class="nav-badge fav-count" style="display:none">0</span></button>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Inicio</a>
+  <a href="catalog.html">Catálogo</a>
+  <a href="about.html">Nosotros</a>
+  <a href="about.html#contacto">Contacto</a>
+</div>
+
+<div class="page-top">
+
+  <!-- ABOUT HERO -->
+  <section class="section" style="background:var(--bg2);border-bottom:1px solid var(--border)">
+    <div class="container">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center">
+        <div>
+          <span class="overline" style="color:var(--accent);display:block;margin-bottom:.75rem">Quiénes Somos</span>
+          <h1>Transformamos Ideas en <em style="color:var(--accent);font-style:normal">Muebles Únicos</em></h1>
+          <p style="margin-top:1.25rem;font-size:1rem;line-height:1.8">MYD Muebles nació en Ecuador con una misión clara: crear muebles de alta calidad con fabricación propia, diseño contemporáneo y precios justos. En más de 15 años hemos equipado miles de hogares, oficinas y negocios a lo largo y ancho del país.</p>
+          <p style="margin-top:1rem;font-size:1rem;line-height:1.8">Cada mueble es producido en nuestros talleres con materiales premium seleccionados, garantizando durabilidad y acabados impecables.</p>
+          <div style="display:flex;gap:2rem;margin-top:2rem;flex-wrap:wrap">
+            <div><strong style="font-size:2rem;color:var(--accent);display:block">15+</strong><span style="color:var(--muted);font-size:.85rem">Años de experiencia</span></div>
+            <div><strong style="font-size:2rem;color:var(--accent);display:block">2,000+</strong><span style="color:var(--muted);font-size:.85rem">Clientes satisfechos</span></div>
+            <div><strong style="font-size:2rem;color:var(--accent);display:block">500+</strong><span style="color:var(--muted);font-size:.85rem">Diseños exclusivos</span></div>
+          </div>
+        </div>
+        <div class="glass" style="aspect-ratio:1;display:flex;align-items:center;justify-content:center;font-size:8rem;opacity:.5;border-radius:var(--radius)">🏭</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="section" id="servicios">
+    <div class="container">
+      <div class="section-heading center">
+        <span class="overline">Lo que Hacemos</span>
+        <h2>Nuestros Servicios</h2>
+        <div class="divider center"></div>
+      </div>
+      <div class="features-grid">
+        <div class="feature-card glass">
+          <div class="feature-icon">🚚</div>
+          <h4>Entrega a Domicilio</h4>
+          <p>Entregamos en todo el Ecuador. Coordinamos fecha y hora para tu comodidad.</p>
+        </div>
+        <div class="feature-card glass">
+          <div class="feature-icon">🔧</div>
+          <h4>Armado e Instalación</h4>
+          <p>Nuestro equipo técnico instala tu mueble en el lugar exacto que necesitas, sin costo adicional.</p>
+        </div>
+        <div class="feature-card glass">
+          <div class="feature-icon">🎨</div>
+          <h4>Personalización</h4>
+          <p>Adaptamos colores, medidas y materiales a tu gusto. Hacemos el mueble de tus sueños.</p>
+        </div>
+        <div class="feature-card glass">
+          <div class="feature-icon">🛡️</div>
+          <h4>Garantía Extendida</h4>
+          <p>Hasta 5 años de garantía en estructura. Reparamos o reemplazamos si algo falla.</p>
+        </div>
+        <div class="feature-card glass">
+          <div class="feature-icon">💬</div>
+          <h4>Asesoría de Diseño</h4>
+          <p>Nuestros diseñadores te orientan para elegir el mueble ideal según tu espacio y presupuesto.</p>
+        </div>
+        <div class="feature-card glass">
+          <div class="feature-icon">🏢</div>
+          <h4>Proyectos Corporativos</h4>
+          <p>Equipamos oficinas, hoteles, restaurantes y locales comerciales con precios especiales por volumen.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="section" id="faq" style="background:var(--bg2)">
+    <div class="container">
+      <div class="section-heading center">
+        <span class="overline">Tienes dudas</span>
+        <h2>Preguntas Frecuentes</h2>
+        <div class="divider center"></div>
+      </div>
+      <div style="max-width:800px;margin:0 auto">
+        <div class="faq-item">
+          <div class="faq-question">¿Cuál es el tiempo de entrega? <span class="arrow">▼</span></div>
+          <div class="faq-answer">Para productos en stock, la entrega se realiza entre 3 y 7 días hábiles. Para muebles personalizados, el plazo es de 15 a 30 días hábiles dependiendo de la complejidad.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">¿Entregan en todo el Ecuador? <span class="arrow">▼</span></div>
+          <div class="faq-answer">Sí, realizamos entregas en todo el territorio ecuatoriano. Para ciudades principales como Quito, Guayaquil y Cuenca la entrega es gratuita. Para otras ciudades puede aplicar un costo adicional de transporte.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">¿Puedo personalizar el color y medidas? <span class="arrow">▼</span></div>
+          <div class="faq-answer">Absolutamente. Ofrecemos personalización completa en colores, telas, acabados y medidas. Contáctanos con los detalles de tu proyecto y nuestros diseñadores te brindarán una cotización personalizada.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">¿Qué cubre la garantía? <span class="arrow">▼</span></div>
+          <div class="faq-answer">La garantía cubre defectos de fabricación en estructura, herrajes y tapizados. El plazo varía según el producto (1 a 5 años). No cubre daños por mal uso, humedad excesiva o accidentes.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">¿Aceptan devoluciones o cambios? <span class="arrow">▼</span></div>
+          <div class="faq-answer">Aceptamos cambios dentro de los primeros 30 días si el producto presenta defectos de fábrica. Los muebles personalizados no tienen devolución salvo defecto de manufactura.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">¿Cuáles son las formas de pago? <span class="arrow">▼</span></div>
+          <div class="faq-answer">Aceptamos transferencia bancaria, tarjeta de crédito/débito, efectivo y pago contra entrega (para Quito y Guayaquil). También ofrecemos planes de financiamiento sin intereses hasta 12 meses con tarjetas seleccionadas.</div>
+        </div>
+        <div class="faq-item">
+          <div class="faq-question">¿Hacen proyectos para empresas? <span class="arrow">▼</span></div>
+          <div class="faq-answer">Sí. Tenemos un área dedicada a proyectos corporativos. Ofrecemos precios especiales por volumen, financiamiento y servicio de diseño e instalación integral para oficinas, hoteles y negocios.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="section" id="contacto">
+    <div class="container">
+      <div class="section-heading center">
+        <span class="overline">Estamos para ti</span>
+        <h2>Contáctanos</h2>
+        <div class="divider center"></div>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <div class="contact-info-item">
+            <div class="icon">📍</div>
+            <div>
+              <h4>Dirección</h4>
+              <p>Av. Principal 123, Quito, Ecuador<br>Bodega y Sala de Exhibición</p>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="icon">📞</div>
+            <div>
+              <h4>Teléfono</h4>
+              <p><a href="tel:+593991234567" style="color:var(--muted)">+593 99 123 4567</a></p>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="icon">💬</div>
+            <div>
+              <h4>WhatsApp</h4>
+              <p><a href="https://wa.me/593991234567?text=Hola%2C%20me%20interesa%20información%20sobre%20sus%20muebles" target="_blank" rel="noopener" style="color:var(--muted)">+593 99 123 4567</a></p>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="icon">✉️</div>
+            <div>
+              <h4>Correo Electrónico</h4>
+              <p><a href="mailto:ventas@mydmuebles.ec" style="color:var(--muted)">ventas@mydmuebles.ec</a></p>
+            </div>
+          </div>
+          <div class="contact-info-item">
+            <div class="icon">🕐</div>
+            <div>
+              <h4>Horario de Atención</h4>
+              <p>Lunes a Viernes: 8:00 – 18:00<br>Sábados: 9:00 – 14:00</p>
+            </div>
+          </div>
+          <div style="display:flex;gap:.75rem;margin-top:.5rem">
+            <a class="social-btn" href="https://instagram.com/mydmuebles" target="_blank" rel="noopener" aria-label="Instagram">📸</a>
+            <a class="social-btn" href="https://facebook.com/mydmuebles" target="_blank" rel="noopener" aria-label="Facebook">👍</a>
+            <a class="social-btn" href="https://wa.me/593991234567" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+          </div>
+        </div>
+
+        <div class="contact-form glass">
+          <h3 style="margin-bottom:1.5rem">Envíanos un Mensaje</h3>
+          <form id="contactForm">
+            <div class="form-row">
+              <div class="form-group"><label>Nombre *</label><input type="text" name="name" required placeholder="Tu nombre"></div>
+              <div class="form-group"><label>Teléfono *</label><input type="tel" name="phone" required placeholder="+593 99 000 0000"></div>
+            </div>
+            <div class="form-group"><label>Correo Electrónico</label><input type="email" name="email" placeholder="tu@correo.com"></div>
+            <div class="form-group"><label>Asunto</label><input type="text" name="subject" placeholder="¿En qué podemos ayudarte?"></div>
+            <div class="form-group"><label>Mensaje *</label><textarea name="message" required placeholder="Cuéntanos sobre tu proyecto o consulta..." style="min-height:130px"></textarea></div>
+            <button type="submit" class="btn btn-primary btn-full">Enviar Mensaje →</button>
+          </form>
+          <div style="margin-top:1rem;text-align:center">
+            <p style="font-size:.82rem">O escríbenos directamente por</p>
+            <a href="https://wa.me/593991234567?text=Hola%2C%20quiero%20información%20sobre%20muebles" target="_blank" rel="noopener" class="btn btn-gold btn-sm" style="margin-top:.5rem">📱 WhatsApp</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Map placeholder -->
+      <div class="map-placeholder">
+        <div class="icon">🗺️</div>
+        <p style="color:var(--muted)">Av. Principal 123, Quito, Ecuador</p>
+        <a href="https://maps.google.com/?q=Quito+Ecuador" target="_blank" rel="noopener" class="btn btn-outline btn-sm">Abrir en Google Maps</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- TERMS -->
+  <section class="section" id="terminos" style="background:var(--bg2)">
+    <div class="container">
+      <div class="section-heading">
+        <span class="overline">Legal</span>
+        <h2>Términos, Condiciones y Políticas</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="glass" style="padding:2rem;max-width:860px">
+        <h4 style="margin-bottom:.75rem;color:var(--accent)">Política de Ventas</h4>
+        <p style="margin-bottom:1rem">Los precios mostrados están en dólares americanos (USD) e incluyen IVA. MYD Muebles se reserva el derecho de modificar precios sin previo aviso. El pedido se confirma únicamente con el pago del 50% de anticipo.</p>
+
+        <h4 style="margin-bottom:.75rem;color:var(--accent)">Entregas</h4>
+        <p style="margin-bottom:1rem">Las fechas de entrega son referenciales. MYD Muebles no se responsabiliza por retrasos causados por factores externos. La entrega se confirma 24 horas antes por llamada o mensaje de WhatsApp.</p>
+
+        <h4 style="margin-bottom:.75rem;color:var(--accent)">Garantía</h4>
+        <p style="margin-bottom:1rem">La garantía cubre exclusivamente defectos de fabricación. No aplica para daños por mal uso, exposición a humedad, agua, solventes o modificaciones realizadas por terceros.</p>
+
+        <h4 style="margin-bottom:.75rem;color:var(--accent)">Devoluciones y Cambios</h4>
+        <p style="margin-bottom:1rem">Se aceptan cambios dentro de los 30 días posteriores a la entrega, únicamente por defecto de fabricación comprobado. Los muebles a medida y personalizados no tienen devolución.</p>
+
+        <h4 style="margin-bottom:.75rem;color:var(--accent)">Privacidad</h4>
+        <p>Los datos personales proporcionados en formularios serán utilizados exclusivamente para gestionar tu pedido y comunicaciones relacionadas. No compartimos información con terceros.</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-brand" style="margin-bottom:1rem"><div class="nav-logo">M</div> MYD <span>Muebles</span></div>
+        <p>Fabricación y venta de muebles de alta calidad en Ecuador.</p>
+        <div class="footer-social">
+          <a class="social-btn" href="https://instagram.com/mydmuebles" target="_blank" rel="noopener" aria-label="Instagram">📸</a>
+          <a class="social-btn" href="https://facebook.com/mydmuebles" target="_blank" rel="noopener" aria-label="Facebook">👍</a>
+          <a class="social-btn" href="https://wa.me/593991234567" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+        </div>
+      </div>
+      <div class="footer-col"><h5>Catálogo</h5><ul>
+        <li><a href="catalog.html?cat=salas">Salas</a></li>
+        <li><a href="catalog.html?cat=comedores">Comedores</a></li>
+        <li><a href="catalog.html?cat=dormitorios">Dormitorios</a></li>
+        <li><a href="catalog.html?cat=oficina">Oficina</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Empresa</h5><ul>
+        <li><a href="about.html">Nosotros</a></li>
+        <li><a href="about.html#servicios">Servicios</a></li>
+        <li><a href="about.html#faq">FAQ</a></li>
+        <li><a href="about.html#contacto">Contacto</a></li>
+      </ul></div>
+      <div class="footer-col footer-contact"><h5>Contacto</h5><ul>
+        <li><span class="icon">📍</span><span>Av. Principal 123, Quito</span></li>
+        <li><span class="icon">📞</span><a href="tel:+593991234567">+593 99 123 4567</a></li>
+        <li><span class="icon">✉️</span><a href="mailto:ventas@mydmuebles.ec">ventas@mydmuebles.ec</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 MYD Muebles. Todos los derechos reservados.</p>
+      <div class="footer-bottom-links"><a href="#terminos">Términos</a><a href="#terminos">Privacidad</a></div>
+    </div>
+  </div>
+</footer>
+
+<a class="whatsapp-float" href="https://wa.me/593991234567?text=Hola%2C%20quiero%20información%20sobre%20muebles" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+<!-- Cart Drawer -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<div class="cart-drawer" id="cartDrawer" role="dialog" aria-label="Carrito">
+  <div class="cart-header"><h3>🛒 Carrito</h3><button class="cart-close" id="cartClose">✕</button></div>
+  <div class="cart-items" id="cartItems"><div class="cart-empty"><div class="icon">🛒</div><p>Tu carrito está vacío</p></div></div>
+  <div class="cart-footer">
+    <div class="cart-total"><span>Total</span><span id="cartTotal">$0</span></div>
+    <button class="btn btn-primary btn-full" onclick="showToast('Función de pago próximamente disponible','')">💳 Proceder al Pago</button>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

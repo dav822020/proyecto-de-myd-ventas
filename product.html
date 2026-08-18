@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Detalle de producto — MYD Muebles">
+  <title id="pageTitle">Producto — MYD Muebles</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="index.html" class="nav-brand"><div class="nav-logo">M</div> MYD <span>Muebles</span></a>
+  <div class="nav-links">
+    <a href="index.html">Inicio</a>
+    <a href="catalog.html">Catálogo</a>
+    <a href="about.html">Nosotros</a>
+    <a href="about.html#contacto">Contacto</a>
+  </div>
+  <div class="nav-actions">
+    <button class="nav-icon-btn open-cart" title="Carrito">🛒 <span class="nav-badge cart-count" style="display:none">0</span></button>
+    <button class="nav-icon-btn" title="Favoritos">❤️ <span class="nav-badge fav-count" style="display:none">0</span></button>
+  </div>
+  <button class="hamburger" id="hamburger" aria-label="Menú" aria-expanded="false"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-nav" id="mobileNav">
+  <a href="index.html">Inicio</a>
+  <a href="catalog.html">Catálogo</a>
+  <a href="about.html">Nosotros</a>
+  <a href="about.html#contacto">Contacto</a>
+</div>
+
+<div class="page-top">
+
+  <!-- Breadcrumb -->
+  <div style="background:var(--bg2);border-bottom:1px solid var(--border);padding:.75rem 0">
+    <div class="container" style="font-size:.85rem;color:var(--muted)">
+      <a href="index.html" style="color:var(--muted)">Inicio</a> /
+      <a href="catalog.html" style="color:var(--muted)">Catálogo</a> /
+      <span id="breadcrumbName" style="color:var(--white)">Producto</span>
+    </div>
+  </div>
+
+  <!-- PRODUCT DETAIL -->
+  <section class="section">
+    <div class="container">
+      <div class="product-detail-grid" id="productDetail">
+        <div style="text-align:center;padding:4rem;color:var(--muted)">Cargando producto...</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RELATED PRODUCTS -->
+  <section class="section" style="background:var(--bg2)">
+    <div class="container">
+      <div class="section-heading">
+        <span class="overline">También te puede interesar</span>
+        <h2>Productos Relacionados</h2>
+        <div class="divider"></div>
+      </div>
+      <div class="products-grid" id="relatedProducts"></div>
+    </div>
+  </section>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="nav-brand" style="margin-bottom:1rem"><div class="nav-logo">M</div> MYD <span>Muebles</span></div>
+        <p>Fabricación y venta de muebles de alta calidad en Ecuador.</p>
+        <div class="footer-social">
+          <a class="social-btn" href="https://instagram.com/mydmuebles" target="_blank" rel="noopener" aria-label="Instagram">📸</a>
+          <a class="social-btn" href="https://facebook.com/mydmuebles" target="_blank" rel="noopener" aria-label="Facebook">👍</a>
+          <a class="social-btn" href="https://wa.me/593991234567" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+        </div>
+      </div>
+      <div class="footer-col"><h5>Catálogo</h5><ul>
+        <li><a href="catalog.html?cat=salas">Salas</a></li>
+        <li><a href="catalog.html?cat=comedores">Comedores</a></li>
+        <li><a href="catalog.html?cat=dormitorios">Dormitorios</a></li>
+        <li><a href="catalog.html?cat=oficina">Oficina</a></li>
+      </ul></div>
+      <div class="footer-col"><h5>Empresa</h5><ul>
+        <li><a href="about.html">Nosotros</a></li>
+        <li><a href="about.html#servicios">Servicios</a></li>
+        <li><a href="about.html#faq">FAQ</a></li>
+        <li><a href="about.html#contacto">Contacto</a></li>
+      </ul></div>
+      <div class="footer-col footer-contact"><h5>Contacto</h5><ul>
+        <li><span class="icon">📍</span><span>Av. Principal 123, Quito</span></li>
+        <li><span class="icon">📞</span><a href="tel:+593991234567">+593 99 123 4567</a></li>
+        <li><span class="icon">✉️</span><a href="mailto:ventas@mydmuebles.ec">ventas@mydmuebles.ec</a></li>
+      </ul></div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 MYD Muebles. Todos los derechos reservados.</p>
+      <div class="footer-bottom-links"><a href="about.html#terminos">Términos</a><a href="about.html#terminos">Privacidad</a></div>
+    </div>
+  </div>
+</footer>
+
+<a class="whatsapp-float" href="#" target="_blank" rel="noopener" aria-label="WhatsApp">💬</a>
+
+<!-- Cart Drawer -->
+<div class="cart-overlay" id="cartOverlay"></div>
+<div class="cart-drawer" id="cartDrawer" role="dialog" aria-label="Carrito">
+  <div class="cart-header"><h3>🛒 Carrito</h3><button class="cart-close" id="cartClose">✕</button></div>
+  <div class="cart-items" id="cartItems"><div class="cart-empty"><div class="icon">🛒</div><p>Tu carrito está vacío</p></div></div>
+  <div class="cart-footer">
+    <div class="cart-total"><span>Total</span><span id="cartTotal">$0</span></div>
+    <button class="btn btn-primary btn-full" onclick="showToast('Función de pago próximamente disponible','')">💳 Proceder al Pago</button>
+  </div>
+</div>
+
+<!-- Quote Modal -->
+<div class="modal-overlay" id="quoteModal">
+  <div class="modal">
+    <button class="modal-close" onclick="closeModal('quoteModal')">✕</button>
+    <h3>💬 Solicitar Cotización</h3>
+    <form id="quoteForm">
+      <div class="form-group"><label>Nombre *</label><input type="text" name="name" required placeholder="Tu nombre completo"></div>
+      <div class="form-group"><label>Teléfono / WhatsApp *</label><input type="tel" name="phone" required placeholder="+593 99 000 0000"></div>
+      <div class="form-group"><label>Correo</label><input type="email" name="email" placeholder="tu@correo.com"></div>
+      <div class="form-group"><label>Mensaje</label><textarea name="message" placeholder="Detalles del producto o personalización..."></textarea></div>
+      <button type="submit" class="btn btn-primary btn-full">Enviar Cotización →</button>
+    </form>
+  </div>
+</div>
+
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script>
+const urlId = parseInt(new URLSearchParams(window.location.search).get('id'));
+const product = getAdminProducts().find(p => p.id === urlId);
+
+if (!product) {
+  document.getElementById('productDetail').innerHTML = `<div style="text-align:center;padding:4rem;grid-column:1/-1"><p style="font-size:1.5rem;margin-bottom:1rem">Producto no encontrado</p><a href="catalog.html" class="btn btn-primary">Ver Catálogo</a></div>`;
+} else {
+  document.title = `${product.name} — MYD Muebles`;
+  document.getElementById('pageTitle').textContent = `${product.name} — MYD Muebles`;
+  document.getElementById('breadcrumbName').textContent = product.name;
+
+  const catName = CATEGORIES.find(c => c.id === product.category)?.name || product.category;
+
+  // Fake 4 gallery images using same emoji placeholder
+  const thumbs = [product.icon||'🪑', '📷', '🖼️', '🔍'].map((ic, i) => `
+    <div class="gallery-thumb ${i===0?'active':''}" onclick="switchThumb(this, '${ic}')">
+      <div class="img-placeholder" style="width:100%;height:100%;font-size:1.5rem">${ic}</div>
+    </div>`).join('');
+
+  const colorOpts = (product.colors || [product.color]).map((c,i) => `<button class="option-btn ${i===0?'active':''}">${c}</button>`).join('');
+  const sizeOpts  = (product.sizes || []).map((s,i) => `<button class="option-btn ${i===0?'active':''}">${s}</button>`).join('');
+
+  document.getElementById('productDetail').innerHTML = `
+    <!-- Gallery -->
+    <div>
+      <div class="gallery-main glass" id="galleryMain">
+        <div class="img-placeholder" id="mainThumb" style="height:100%;font-size:8rem">${product.icon||'🪑'}</div>
+      </div>
+      <div class="gallery-thumbs">${thumbs}</div>
+    </div>
+
+    <!-- Info -->
+    <div class="product-detail-info">
+      <div class="product-cat">${catName}</div>
+      ${product.badge ? `<span class="badge badge-${product.badge}" style="margin-bottom:.75rem;display:inline-block">${product.badge==='new'?'NUEVO':product.badge==='sale'?'OFERTA':'HOT'}</span>` : ''}
+      <h1>${product.name}</h1>
+      <div class="product-detail-price">
+        $${product.price.toLocaleString()}
+        ${product.priceOld ? `<span class="old-price">$${product.priceOld.toLocaleString()}</span>` : ''}
+      </div>
+
+      <p class="product-desc">${product.description}</p>
+
+      <!-- Specs Table -->
+      <h4 style="margin-bottom:.75rem">📋 Ficha Técnica</h4>
+      <table class="spec-table">
+        <tr><th>Medidas (Al × An × Pr)</th><td>${product.dims.h} × ${product.dims.w} × ${product.dims.d} cm</td></tr>
+        <tr><th>Material</th><td>${product.material}</td></tr>
+        <tr><th>Acabado</th><td>${product.acabado||'—'}</td></tr>
+        <tr><th>Color</th><td>${product.color}</td></tr>
+        <tr><th>Peso</th><td>${product.weight}</td></tr>
+        <tr><th>Garantía</th><td>${product.warranty}</td></tr>
+        <tr><th>Cuidado</th><td>${product.care}</td></tr>
+      </table>
+
+      ${colorOpts ? `<div class="option-group"><h5>Color</h5><div class="option-buttons">${colorOpts}</div></div>` : ''}
+      ${sizeOpts  ? `<div class="option-group"><h5>Tamaño / Configuración</h5><div class="option-buttons">${sizeOpts}</div></div>` : ''}
+
+      <div class="option-group">
+        <h5>Cantidad</h5>
+        <div class="qty-control">
+          <button class="qty-btn qty-minus" aria-label="Reducir cantidad">−</button>
+          <span class="qty-val" id="qtyVal">1</span>
+          <button class="qty-btn qty-plus" aria-label="Aumentar cantidad">+</button>
+        </div>
+      </div>
+
+      <div class="product-detail-actions">
+        <button class="btn btn-primary" onclick="addToCartDetail()">🛒 Agregar al Carrito</button>
+        <button class="btn btn-gold" onclick="openModal('quoteModal')">💬 Solicitar Cotización</button>
+        <a class="btn btn-outline" href="https://wa.me/593991234567?text=${encodeURIComponent('Hola, me interesa el producto: '+product.name)}" target="_blank" rel="noopener">📱 Consultar</a>
+        <button class="product-action-btn ${favorites.has(product.id)?'fav-active':''}" data-fav="${product.id}" onclick="favorites.toggle(${product.id})" style="width:44px;height:44px" title="Favorito" aria-label="Favorito">❤️</button>
+      </div>
+
+      <div style="margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:.75rem;font-size:.82rem;color:var(--muted)">
+        <span>🚚 Envío e instalación incluidos</span>
+        <span>🛡️ Garantía ${product.warranty}</span>
+        <span>🔄 Cambios en 30 días</span>
+      </div>
+    </div>`;
+
+  // Related products
+  const related = getAdminProducts().filter(p => p.category === product.category && p.id !== product.id).slice(0, 4);
+  document.getElementById('relatedProducts').innerHTML = related.map(p => `
+    <div class="product-card glass" onclick="window.location.href='product.html?id=${p.id}'">
+      <div class="product-img">
+        <div class="img-placeholder">${p.icon||'🪑'}</div>
+        <div class="product-badges">${p.badge?`<span class="badge badge-${p.badge}">${p.badge==='new'?'NUEVO':p.badge==='sale'?'OFERTA':'HOT'}</span>`:''}</div>
+      </div>
+      <div class="product-body">
+        <div class="product-name">${p.name}</div>
+        <div class="product-dims">📐 ${p.dims.h}×${p.dims.w}×${p.dims.d} cm</div>
+        <div class="product-footer">
+          <div class="product-price">$${p.price.toLocaleString()}</div>
+          <a href="product.html?id=${p.id}" class="btn btn-primary btn-sm" onclick="event.stopPropagation()">Ver →</a>
+        </div>
+      </div>
+    </div>`).join('');
+
+  function addToCartDetail() {
+    const qty = parseInt(document.getElementById('qtyVal')?.textContent) || 1;
+    cart.add({ id: product.id, name: product.name, price: product.price, icon: product.icon||'🪑' }, qty);
+  }
+
+  function switchThumb(el, icon) {
+    document.querySelectorAll('.gallery-thumb').forEach(t => t.classList.remove('active'));
+    el.classList.add('active');
+    const main = document.getElementById('mainThumb');
+    if (main) main.textContent = icon;
+  }
+  window.switchThumb = switchThumb;
+  window.addToCartDetail = addToCartDetail;
+}
+</script>
+</body>
+</html>
