@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: #0a0a0f;
+    color: #f0f0f5;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #0a0a0f;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #2a2a3a;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #00d4ff;
+  }
+}
+
+@layer components {
+  .glass-card {
+    background: rgba(17, 17, 24, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    border-radius: 12px;
+  }
+
+  .glass-card-hover {
+    @apply glass-card transition-all duration-300;
+  }
+
+  .glass-card-hover:hover {
+    border-color: rgba(0, 212, 255, 0.3);
+    box-shadow: 0 8px 40px rgba(0, 212, 255, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .btn-primary {
+    @apply bg-accent text-black font-semibold px-6 py-3 rounded-lg transition-all duration-200 hover:bg-accent-hover active:scale-95 inline-flex items-center gap-2;
+  }
+
+  .btn-secondary {
+    @apply border border-accent text-accent font-semibold px-6 py-3 rounded-lg transition-all duration-200 hover:bg-accent hover:text-black active:scale-95 inline-flex items-center gap-2;
+  }
+
+  .btn-ghost {
+    @apply text-text-muted font-medium px-4 py-2 rounded-lg transition-all duration-200 hover:text-foreground hover:bg-white/5 inline-flex items-center gap-2;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold text-foreground;
+  }
+
+  .section-subtitle {
+    @apply text-text-muted text-lg mt-3 max-w-2xl;
+  }
+
+  .input-field {
+    @apply w-full bg-card border border-card-border rounded-lg px-4 py-3 text-foreground placeholder-text-muted focus:outline-none focus:border-accent transition-colors duration-200;
+  }
+
+  .accent-line {
+    @apply w-12 h-1 bg-accent rounded-full;
+  }
+
+  .badge {
+    @apply text-xs font-semibold px-2 py-1 rounded-full;
+  }
+
+  .badge-accent {
+    @apply badge bg-accent/20 text-accent;
+  }
+
+  .badge-success {
+    @apply badge bg-success/20 text-success;
+  }
+
+  .badge-warning {
+    @apply badge bg-warning/20 text-warning;
+  }
+
+  .badge-danger {
+    @apply badge bg-danger/20 text-danger;
+  }
+
+  .nav-link {
+    @apply text-text-muted hover:text-foreground transition-colors duration-200 font-medium text-sm;
+  }
+
+  .nav-link-active {
+    @apply text-accent font-semibold;
+  }
+}
+
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
